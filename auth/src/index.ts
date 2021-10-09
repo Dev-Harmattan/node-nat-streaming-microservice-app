@@ -1,12 +1,10 @@
 import express from 'express';
+import {currentUserRouter} from './routes/current-user';
 
 const app = express();
 app.use(express.json());
 
-
-app.get('/api/user/currentUser', (req, res) => {
-  res.send('Current User');
-})
+app.use(currentUserRouter);
 
 const PORT = 3000;
 app.listen(3000, () => {
