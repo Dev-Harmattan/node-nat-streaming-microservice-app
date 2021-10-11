@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import 'express-async-errors';
 import {currentUserRouter} from './routes/current-user';
 import {signinRouter} from './routes/signin';
@@ -23,8 +24,19 @@ app.all('*', async () => {
 app.use(errorMiddleware);
 
 
+const startListen = async () => {
+  try {
+    await mongoose.connect('mongodb://auth-mongo-srv:27017');
+    console.log('Database connnected');
+  } catch (error) {
+    console.error(error);
+  }
 
-const PORT = 3000;
-app.listen(3000, () => {
-  console.log(`Auth running on port: ${PORT}`);
-})
+  const PORT = 3000;
+  app.listen(3000, () => {
+    console.log(`Auth running on port: ${PORT}`);
+  })
+}
+
+startListen();
+
