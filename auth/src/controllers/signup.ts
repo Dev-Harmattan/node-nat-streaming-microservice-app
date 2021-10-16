@@ -1,7 +1,9 @@
 import {Request, Response} from 'express';
 import { validationResult} from 'express-validator';
-import {DatabaseConnectionErrors} from '../errors/DatabaseConnectionErrors';
+import {BadRequestError} from '../errors/BadRequestError';
 import {RequestValidationError} from '../errors/RequestValidationError';
+import {User} from '../models/user';
+
 export const userSignup = async (req: Request, res: Response) => {
   const {email, password} = req.body;
 
@@ -10,7 +12,13 @@ export const userSignup = async (req: Request, res: Response) => {
     throw new RequestValidationError(errors.array());
   }
 
-  throw new DatabaseConnectionErrors();
+  const existingUser = await User.findOne({email});
+  if(existingUser){
+    throw new BadRequestError('Email in use');
+  }
 
-  res.send({});
+  const user = User.build({email, password});
+  await user.save()
+
+  res.status(201).json(user);
 }
