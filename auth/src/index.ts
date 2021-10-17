@@ -31,6 +31,9 @@ app.use(errorMiddleware);
 
 
 const startListen = async () => {
+  if(!process.env.JWT_KEY){
+    throw new Error('JWT key must be specified');
+  }
   try {
     await mongoose.connect('mongodb://auth-mongo-srv:27017');
     console.log('Database connnected');

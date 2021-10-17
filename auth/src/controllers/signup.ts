@@ -22,7 +22,7 @@ export const userSignup = async (req: Request, res: Response) => {
   await user.save()
 
   //sign jsonwebtoken for user
-  const userJwt = jwt.sign({id: user._id, email: user.email}, 'secret');
+  const userJwt = jwt.sign({id: user._id, email: user.email}, process.env.JWT_KEY!);
 
   //store userJwt in session
   req.session = {
