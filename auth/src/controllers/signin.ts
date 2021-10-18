@@ -20,7 +20,6 @@ export const userSignin = async (req: Request, res: Response) => {
 
   //compare the user password with hashPassword
   const match = await Password.compare(password, user.password);
-  console.log(match)
   if(!match) {
     throw new BadRequestError('Sorry, your password was incorrect.')
   }
