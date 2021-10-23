@@ -17,3 +17,10 @@ spec:
                 name: auth-svr
                 port: 
                   number: 3000
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:  
+                name: client-svr
+                port:
+                  number: 3000
