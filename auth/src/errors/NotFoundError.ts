@@ -1,4 +1,4 @@
-import { CustomError } from "./CustomError";
+import {CustomError} from '@dev_harmattan/common';
 
 export class NotFoundError extends CustomError {
   status = 404;

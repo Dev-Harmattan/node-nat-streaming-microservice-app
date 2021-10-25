@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
-import { BadRequestError } from '../errors/BadRequestError';
-import { RequestValidationError } from '../errors/RequestValidationError';
+import {BadRequestError, RequestValidationError} from '@dev_harmattan/common';
 import { User } from '../models/user';
 import { Password } from '../utils/Password';
 import jwt from 'jsonwebtoken';

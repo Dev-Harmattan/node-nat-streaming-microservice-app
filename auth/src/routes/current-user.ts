@@ -1,8 +1,8 @@
 import {Router} from 'express';
 const router = Router();
-import {currentUser} from '../controllers/currentUser'
-import {currentUserMiddleware} from '../middleware/currentUserMiddleware';
-import {authMiddleware} from '../middleware/authMiddleware'
+import {currentUser} from '../controllers/currentUser';
+import {currentUserMiddleware, authMiddleware} from '@dev_harmattan/common';
+
 
 router.get('/api/users/currentuser', currentUserMiddleware, authMiddleware, currentUser);
 

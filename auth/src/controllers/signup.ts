@@ -1,8 +1,7 @@
 import {Request, Response} from 'express';
 import { validationResult} from 'express-validator';
 import jwt from 'jsonwebtoken';
-import {BadRequestError} from '../errors/BadRequestError';
-import {RequestValidationError} from '../errors/RequestValidationError';
+import {BadRequestError, RequestValidationError} from '@dev_harmattan/common';
 import {User} from '../models/user';
 
 export const userSignup = async (req: Request, res: Response) => {

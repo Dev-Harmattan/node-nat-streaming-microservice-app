@@ -5,8 +5,8 @@ import {currentUserRouter} from './routes/current-user';
 import {signinRouter} from './routes/signin';
 import {signoutRouter} from './routes/signout';
 import {signupRouter} from './routes/signup';
-import {errorMiddleware} from './middleware/errorMiddleware';
-import {NotFoundError} from './errors/NotFoundError';
+import {errorMiddleware, NotFoundError} from '@dev_harmattan/common'
+
 
 const app = express();
 app.set('trust proxy', true);
