@@ -2,7 +2,7 @@ import request from 'supertest';
 import mongoose from 'mongoose';
 import {app} from '../../app';
 
-
+jest.mock('../../nats-wrapper');
 
 describe('Show ticket / GEt', () => {
   it('should return 404 if the ticket is not found', async () => {
